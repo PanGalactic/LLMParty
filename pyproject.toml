@@ -36,8 +36,8 @@ requires-python = ">=3.6"
 
 # Define URLs associated with the project
 [project.urls]
-"Homepage" = "https://github.com/yourusername/LLMParty"
-"Bug Tracker" = "https://github.com/yourusername/LLMParty/issues"
+"Homepage" = "https://github.com/PanGalactic/LLMParty"
+"Bug Tracker" = "https://github.com/PanGalactic/LLMParty/issues"
 
 # Define command-line scripts
 [project.scripts]
