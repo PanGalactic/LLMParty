@@ -1,0 +1,123 @@
+# config.yaml
+
+# Configuration for OpenAI
+openai:
+  # The API endpoint for OpenAI's chat completions
+  api_url: https://api.openai.com/v1/chat/completions
+  # The header used for authentication
+  auth_header: Authorization
+  # The prefix used in the authentication header
+  auth_prefix: Bearer
+  # The environment variable name for the API key
+  api_key_env: OPENAI_API_KEY
+  # The content type for the API request
+  content_type: application/json
+  # The format of the request to be sent to the API
+  request_format:
+    model: model
+    messages:
+      - role: user
+        content: prompt
+    response_format:
+      type: json_object
+    stream: false
+  # How to parse the response from the API
+  response_parsing:
+    content_path:
+      - choices
+      - 0
+      - message
+      - content
+    usage_mapping:
+      prompt_tokens:
+        - usage
+        - prompt_tokens
+      completion_tokens:
+        - usage
+        - completion_tokens
+      total_tokens:
+        - usage
+        - total_tokens
+
+# Configuration for Anthropic
+anthropic:
+  api_url: https://api.anthropic.com/v1/messages
+  auth_header: X-API-Key
+  auth_prefix: ""
+  api_key_env: ANTHROPIC_API_KEY
+  content_type: application/json
+  api_version_header: anthropic-version
+  api_version: "2023-06-01"
+  request_format:
+    model: model
+    messages:
+      - role: user
+        content: prompt
+      - role: assistant
+        content: "Here is the json:"
+    max_tokens: 4096
+    temperature: 0
+    stream: false
+  response_parsing:
+    content_path:
+      - content
+      - 0
+      - text
+    usage_mapping:
+      prompt_tokens:
+        - usage
+        - input_tokens
+      completion_tokens:
+        - usage
+        - output_tokens
+
+# Configuration for Ollama
+ollama:
+  api_url: http://localhost:11434/api/generate
+  auth_header: null
+  content_type: application/json
+  request_format:
+    model: model
+    prompt: prompt
+    format: json
+    stream: false
+  response_parsing:
+    content_path:
+      - response
+    usage_mapping:
+      prompt_tokens:
+        - prompt_eval_count
+      completion_tokens:
+        - eval_count
+
+# Configuration for Groq
+groq:
+  api_url: https://api.groq.com/openai/v1/chat/completions
+  auth_header: Authorization
+  auth_prefix: Bearer
+  api_key_env: GROQ_API_KEY
+  content_type: application/json
+  request_format:
+    model: model
+    messages:
+      - role: user
+        content: prompt
+    response_format:
+      type: json_object
+    stream: false
+  response_parsing:
+    content_path:
+      - choices
+      - 0
+      - message
+      - content
+    usage_mapping:
+      prompt_tokens:
+        - usage
+        - prompt_tokens
+      completion_tokens:
+        - usage
+        - completion_tokens
+      total_tokens:
+        - usage
+        - total_tokens

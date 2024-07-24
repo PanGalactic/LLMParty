@@ -1,0 +1,55 @@
+# pyproject.toml
+
+# Define the build system requirements
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# Define project metadata
+[project]
+# The name of the package
+name = "llmparty"
+# The version of the package
+version = "0.1.0"
+# A short, one-sentence summary of the package
+description = "A unified JSON API for interacting with various Language Model providers"
+# The path to the README file
+readme = "README.md"
+# The authors of the package
+authors = [{ name = "Panny Malialis", email = "panny.malialis@gmail.com" }]
+# The license of the package
+license = { file = "LICENSE" }
+# Classifiers give additional metadata about your package
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+# Keywords that describe your package
+keywords = ["llm", "api", "model", "ai", "openai", "anthropic", "ollama", "json", "party"]
+# The dependencies required to use your package
+dependencies = [
+    "pyyaml >= 5.3.1",
+]
+# The minimum Python version required
+requires-python = ">=3.6"
+
+# Define URLs associated with the project
+[project.urls]
+"Homepage" = "https://github.com/yourusername/llmparty"
+"Bug Tracker" = "https://github.com/yourusername/llmparty/issues"
+
+# Define command-line scripts
+[project.scripts]
+llmp = "llmparty.main:main"
+llmparty = "llmparty.main:main"
+llmp-setup = "llmparty.setup:main"
+
+# Configure setuptools
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["llmparty*"]
+
+# Include package data
+[tool.setuptools.package-data]
+llmparty = ["config.yaml"]
